@@ -1,4 +1,4 @@
-use crate::{CharacterMap, ElementMap, PathMap, File, Write};
+use crate::{CharacterMap, ElementMap, File, PathMap, Write};
 
 pub fn generate(
     ch: CharacterMap,

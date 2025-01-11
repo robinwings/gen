@@ -1,4 +1,4 @@
-use crate::{RelicSetMap, File, Write};
+use crate::{File, RelicSetMap, Write};
 
 pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_html = String::from(

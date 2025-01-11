@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 tokio.workspace = true
 index.workspace = true
+data.workspace = true

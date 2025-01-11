@@ -1,4 +1,4 @@
-use crate::{LightconeMap, PathMap, File, Write};
+use crate::{File, LightconeMap, PathMap, Write};
 
 pub fn generate(
     lc: LightconeMap,

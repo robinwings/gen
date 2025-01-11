@@ -2,12 +2,13 @@ cargo-features = ["codegen-backend"]
 
 [workspace]
 resolver = "3"
-members = ["index", "make"]
+members = [ "data","index", "make"]
 
 [workspace.dependencies]
 tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }
 starrailrust = { git = "https://github.com/yuvlian/starrailrust", rev = "d877183" }
 index = { path = "index/" }
+data = { path = "data/" }
 
 [profile.release]
 codegen-backend = "llvm"
