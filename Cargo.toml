@@ -1,0 +1,60 @@
+cargo-features = ["codegen-backend"]
+
+[workspace]
+resolver = "3"
+members = ["index", "make"]
+
+[workspace.dependencies]
+tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }
+starrailrust = { git = "https://github.com/yuvlian/starrailrust", rev = "30a4fd3" }
+index = { path = "index/" }
+
+[profile.release]
+codegen-backend = "llvm"
+opt-level = 3
+debug = false
+split-debuginfo = "..."
+strip = true
+debug-assertions = false
+overflow-checks = false
+lto = "fat"
+panic = "unwind"
+incremental = false
+codegen-units = 1
+rpath = false
+
+[profile.release.build-override]
+codegen-backend = "llvm"
+opt-level = 3
+debug = false
+split-debuginfo = "..."
+strip = true
+debug-assertions = false
+overflow-checks = false
+incremental = false
+codegen-units = 1
+
+[profile.dev]
+codegen-backend = "cranelift"
+opt-level = 0
+debug = true
+split-debuginfo = "..."
+strip = "none"
+debug-assertions = true
+overflow-checks = true
+lto = "off"
+panic = "abort"
+incremental = true
+codegen-units = 384
+rpath = false
+
+[profile.dev.build-override]
+codegen-backend = "cranelift"
+opt-level = 0
+debug = true
+split-debuginfo = "..."
+strip = "none"
+debug-assertions = true
+overflow-checks = true
+incremental = true
+codegen-units = 384
