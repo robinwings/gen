@@ -5,7 +5,7 @@ use std::io::Write;
 pub fn generate(
     ch: CharacterMap,
     el: ElementMap,
-    pt: PathMap,
+    pt: &PathMap,
     output_path: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_html = String::from(
@@ -41,8 +41,9 @@ pub fn generate(
 
     <div style="margin-top: 20px; margin-bottom: 10px;">
         <a class="button-link" style="text-decoration: none;" href="#">Character</a>
-        <a class="button-link" style="text-decoration: none;" href="lightcones.html">Lightcone</a>
-        <a class="button-link" style="text-decoration: none;" href="relics.html">Relic Set</a>
+        <a class="button-link" style="text-decoration: none;" href="lightcone.html">Lightcone</a>
+        <a class="button-link" style="text-decoration: none;" href="relic.html">Relic</a>
+        <a class="button-link" style="text-decoration: none;" href="https://github.com/robinwings/gen">Source Code</a>
     </div>
 
     <input 
@@ -94,6 +95,9 @@ pub fn generate(
 
     output_html.push_str(
         r#"
+<img src="icon/rarity/5star.png" class="filter-icon" id="5-star-icon" data-rarity="5*" onclick="toggleFilter(this, 'rarity')" />
+<img src="icon/rarity/4star.png" class="filter-icon" id="4-star-icon" data-rarity="4*" onclick="toggleFilter(this, 'rarity')" />
+
     </div>
 
     <table id="myTable">
@@ -109,6 +113,9 @@ pub fn generate(
     // Add character rows
     for (character_id, character) in ch.character_map.iter() {
         let ch_name = match character.tag.as_str() {
+            "mar7th" => "March 7th",
+            "mar7th2" => "Swordmaster March 7th",
+
             "playerboy" => "Physical Caelus",
             "playerboy2" => "Fire Caelus",
             "playerboy3" => "Imaginary Caelus",
@@ -144,7 +151,7 @@ pub fn generate(
                 <td>{}</td>
                 <td>{}</td>
                 <td>{}</td>
-                <td>{}</td>
+                <td>{}*</td>
                 <td><a class='button-link' style='text-decoration: none;' href='character/{}.html'>{}</a></td>
             </tr>"#,
             ch_name, ch_path, ch_element, character.rarity, character_id, character_id

@@ -969,7 +969,7 @@ checksum = "a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3"
 [[package]]
 name = "starrailrust"
 version = "0.1.0"
-source = "git+https://github.com/yuvlian/starrailrust?rev=30a4fd3#30a4fd300aa19bbd1a886ed950949266fbfec1e2"
+source = "git+https://github.com/yuvlian/starrailrust?rev=d877183#d87718391003bb3fc1973620d53f502409921660"
 dependencies = [
  "reqwest",
  "serde",

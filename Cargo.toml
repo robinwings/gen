@@ -6,7 +6,7 @@ members = ["index", "make"]
 
 [workspace.dependencies]
 tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }
-starrailrust = { git = "https://github.com/yuvlian/starrailrust", rev = "30a4fd3" }
+starrailrust = { git = "https://github.com/yuvlian/starrailrust", rev = "d877183" }
 index = { path = "index/" }
 
 [profile.release]
