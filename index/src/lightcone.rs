@@ -1,11 +1,9 @@
-use crate::{LightconeMap, PathMap};
-use std::fs::File;
-use std::io::Write;
+use crate::{LightconeMap, PathMap, File, Write};
 
 pub fn generate(
     lc: LightconeMap,
     pt: &PathMap,
-    output_path: &str,
+    output_dir: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_html = String::from(
         r###"<!DOCTYPE html>
@@ -171,7 +169,7 @@ function applyZebraStripes(e) {
 </body>
 </html>"#);
 
-    let mut file = File::create(format!("{}lightcone.html", output_path))?;
+    let mut file = File::create(format!("{}lightcone.html", output_dir))?;
     file.write_all(output_html.as_bytes())?;
 
     Ok(())

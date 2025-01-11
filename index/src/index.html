@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0.01; url=https://robinwings.github.io/character">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ccc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .redirect-message {
+            font-size: 50px;
+            margin: 10px;
+        }
+        .fallback-link {
+            font-size: 18px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+    <script>
+        setTimeout(() => {
+            document.getElementById('fallback-link').style.display = 'block';
+        }, 2000);
+    </script>
+</head>
+<body>
+    <div class="redirect-message">
+        <b>REDIRECTING...</b>
+    </div>
+    <div id="fallback-link" class="fallback-link">
+        If you are not redirected, <a href="https://robinwings.github.io/character" style="color: #00aaff;">click here</a>.
+    </div>
+</body>
+</html>

@@ -1,12 +1,10 @@
-use crate::{CharacterMap, ElementMap, PathMap};
-use std::fs::File;
-use std::io::Write;
+use crate::{CharacterMap, ElementMap, PathMap, File, Write};
 
 pub fn generate(
     ch: CharacterMap,
     el: ElementMap,
     pt: &PathMap,
-    output_path: &str,
+    output_dir: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_html = String::from(
         r###"<!DOCTYPE html>
@@ -224,7 +222,7 @@ function myFunction() {
 </body>
 </html>"#);
 
-    let mut file = File::create(format!("{}character.html", output_path))?;
+    let mut file = File::create(format!("{}character.html", output_dir))?;
     file.write_all(output_html.as_bytes())?;
 
     Ok(())

@@ -1,8 +1,6 @@
-use crate::RelicSetMap;
-use std::fs::File;
-use std::io::Write;
+use crate::{RelicSetMap, File, Write};
 
-pub fn generate(rl: RelicSetMap, output_path: &str) -> Result<(), Box<dyn std::error::Error>> {
+pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_html = String::from(
         r###"<!DOCTYPE html>
 <html lang="en">
@@ -147,7 +145,7 @@ function applyZebraStripes(rows) {
 </body>
 </html>"#);
 
-    let mut file = File::create(format!("{}relic.html", output_path))?;
+    let mut file = File::create(format!("{}relic.html", output_dir))?;
     file.write_all(output_html.as_bytes())?;
 
     Ok(())
