@@ -2,7 +2,7 @@ cargo-features = ["codegen-backend"]
 
 [workspace]
 resolver = "3"
-members = [ "data", "icon","index", "make"]
+members = [ "data", "icon","index", "make", "microtest"]
 
 [workspace.dependencies]
 tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }

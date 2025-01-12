@@ -1,4 +1,4 @@
-use crate::{Client, File, ItemMap, LightconeMap, LightconePromotionMap, LightconeRankMap, Write};
+use crate::{Client, warning, File, ItemMap, LightconeMap, LightconePromotionMap, LightconeRankMap, Write};
 
 const JS_SCRIPT: &str = r###"
 function updateRefinements(weaponId, level) {
@@ -49,10 +49,6 @@ pub async fn generate(
     cl: &Client,
     output_dir: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    fn warning(x: &str, y: &str) {
-        println!("couldnt find {} for id {}, skipping LC gen", x, y);
-    }
-
     for (lightcone_id, lightcone) in r.lightcone_rank_map.iter() {
         let lc_info = match l.get_value_by_key(lightcone_id) {
             Some(v) => v,
