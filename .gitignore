@@ -1,3 +1,4 @@
 target/
 __reference__/
 __output__/
+__output_minified__/
