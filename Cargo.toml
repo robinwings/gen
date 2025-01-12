@@ -2,7 +2,7 @@ cargo-features = ["codegen-backend"]
 
 [workspace]
 resolver = "3"
-members = [ "data","index", "make"]
+members = [ "data", "icon","index", "make"]
 
 [workspace.dependencies]
 tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }
@@ -11,6 +11,9 @@ walkdir = "2.5.0"
 starrailrust = { git = "https://github.com/yuvlian/starrailrust", rev = "d877183" }
 index = { path = "index/" }
 data = { path = "data/" }
+icon = { path = "icon/" }
+fast_image_resize = { version = "5.1.0", features = ["image"] }
+image = "0.25.5"
 
 [profile.release]
 codegen-backend = "llvm"
@@ -38,7 +41,9 @@ incremental = false
 codegen-units = 1
 
 [profile.dev]
-codegen-backend = "cranelift"
+# cant use cranelift
+# trap at Instance { def: Item(DefId(2:16275 ~ core[4e28]::core_arch::x86::avx::_mm256_cvtps_epi32)), args: [] } (_ZN4core9core_arch3x863avx18_mm256_cvtps_epi3217h4dcd1b54af0835b9E): llvm.x86.avx.cvt.ps2dq.256
+codegen-backend = "llvm"
 opt-level = 0
 debug = true
 split-debuginfo = "..."
@@ -52,7 +57,9 @@ codegen-units = 384
 rpath = false
 
 [profile.dev.build-override]
-codegen-backend = "cranelift"
+# cant use cranelift
+# trap at Instance { def: Item(DefId(2:16275 ~ core[4e28]::core_arch::x86::avx::_mm256_cvtps_epi32)), args: [] } (_ZN4core9core_arch3x863avx18_mm256_cvtps_epi3217h4dcd1b54af0835b9E): llvm.x86.avx.cvt.ps2dq.256
+codegen-backend = "llvm"
 opt-level = 0
 debug = true
 split-debuginfo = "..."

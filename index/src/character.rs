@@ -1,9 +1,10 @@
-use crate::{CharacterMap, ElementMap, File, PathMap, Write};
+use crate::{CharacterMap, Client, ElementMap, File, PathMap, Write};
 
-pub fn generate(
+pub async fn generate(
     ch: CharacterMap,
     el: ElementMap,
     pt: &PathMap,
+    cl: &Client,
     output_dir: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
     let mut output_html = String::from(
@@ -19,8 +20,6 @@ pub fn generate(
             opacity: 0.35;
             cursor: pointer;
             margin-right: 5px;
-            height: 38px;
-            width: 38px;
         }
         .selected {
             opacity: 1.0;
@@ -61,8 +60,10 @@ pub fn generate(
             continue;
         }
 
+        icon::download_image(cl, &element.icon, &icon::IconType::Element, output_dir).await?;
+
         let element_icon = format!(
-            r#"<img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{}" class="filter-icon" id="{}-icon" data-element="{}" onclick="toggleFilter(this, 'element')" />
+            r#"<img src="./{}" class="filter-icon" id="{}-icon" data-element="{}" onclick="toggleFilter(this, 'element')" />
 "#,
             element.icon,
             element.name.to_lowercase(),
@@ -76,8 +77,10 @@ pub fn generate(
             continue;
         }
 
+        icon::download_image(cl, &path.icon, &icon::IconType::Path, output_dir).await?;
+
         let path_icon = format!(
-            r#"<img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{}" class="filter-icon" id="{}-icon" data-path="{}" onclick="toggleFilter(this, 'path')" />
+            r#"<img src="./{}" class="filter-icon" id="{}-icon" data-path="{}" onclick="toggleFilter(this, 'path')" />
 "#,
             path.icon,
             path.text.to_lowercase(),
@@ -88,8 +91,8 @@ pub fn generate(
 
     output_html.push_str(
         r#"
-<img src="icon/rarity/5star.png" class="filter-icon" id="5-star-icon" data-rarity="5*" onclick="toggleFilter(this, 'rarity')" />
-<img src="icon/rarity/4star.png" class="filter-icon" id="4-star-icon" data-rarity="4*" onclick="toggleFilter(this, 'rarity')" />
+<img src="./icon/rarity/5star.png" class="filter-icon" id="5-star-icon" data-rarity="5*" onclick="toggleFilter(this, 'rarity')" />
+<img src="./icon/rarity/4star.png" class="filter-icon" id="4-star-icon" data-rarity="4*" onclick="toggleFilter(this, 'rarity')" />
 
     </div>
 

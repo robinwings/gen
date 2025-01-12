@@ -9,3 +9,5 @@ index.workspace = true
 data.workspace = true
 walkdir.workspace = true
 minify-html.workspace = true
+starrailrust.workspace = true
+icon.workspace = true

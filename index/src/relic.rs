@@ -14,8 +14,6 @@ pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::er
             opacity: 0.35;
             cursor: pointer;
             margin-right: 5px;
-            height: 38px;
-            width: 38px;
         }
         .selected {
             opacity: 1.0;
@@ -48,7 +46,7 @@ pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::er
     >
 
     <div style="margin-bottom: 20px;">
-<img src="icon/relic/planar.webp" class="filter-icon" id="planar-icon" data-type="Planar" onclick="toggleFilter(this, 'type')" />
+<img src="./icon/relic_filter/planar.png" class="filter-icon" id="planar-icon" data-type="Planar" onclick="toggleFilter(this, 'type')" />
 
     </div>
 

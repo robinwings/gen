@@ -18,8 +18,6 @@ pub fn generate(
             opacity: 0.35;
             cursor: pointer;
             margin-right: 5px;
-            height: 38px;
-            width: 38px;
         }
         .selected {
             opacity: 1.0;
@@ -61,7 +59,7 @@ pub fn generate(
         }
 
         let path_icon = format!(
-            r#"<img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{}" class="filter-icon" id="{}-icon" data-path="{}" onclick="toggleFilter(this, 'path')" />
+            r#"<img src="./{}" class="filter-icon" id="{}-icon" data-path="{}" onclick="toggleFilter(this, 'path')" />
 "#,
             path.icon,
             path.text.to_lowercase(),
@@ -72,9 +70,9 @@ pub fn generate(
 
     output_html.push_str(
         r#"
-<img src="icon/rarity/5star.png" class="filter-icon" id="5-star-icon" data-rarity="5*" onclick="toggleFilter(this, 'rarity')" />
-<img src="icon/rarity/4star.png" class="filter-icon" id="4-star-icon" data-rarity="4*" onclick="toggleFilter(this, 'rarity')" />
-<img src="icon/rarity/3star.png" class="filter-icon" id="3-star-icon" data-rarity="3*" onclick="toggleFilter(this, 'rarity')" />
+<img src="./icon/rarity/5star.png" class="filter-icon" id="5-star-icon" data-rarity="5*" onclick="toggleFilter(this, 'rarity')" />
+<img src="./icon/rarity/4star.png" class="filter-icon" id="4-star-icon" data-rarity="4*" onclick="toggleFilter(this, 'rarity')" />
+<img src="./icon/rarity/3star.png" class="filter-icon" id="3-star-icon" data-rarity="3*" onclick="toggleFilter(this, 'rarity')" />
 
     </div>
 

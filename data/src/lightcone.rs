@@ -1,4 +1,4 @@
-use crate::{File, ItemMap, LightconeMap, LightconePromotionMap, LightconeRankMap, Write};
+use crate::{Client, File, ItemMap, LightconeMap, LightconePromotionMap, LightconeRankMap, Write};
 
 const JS_SCRIPT: &str = r###"
 function updateRefinements(weaponId, level) {
@@ -41,11 +41,12 @@ function initializeSkills() {
     });
 }"###;
 
-pub fn generate(
+pub async fn generate(
     l: LightconeMap,
     r: LightconeRankMap,
     p: LightconePromotionMap,
     i: &ItemMap,
+    cl: &Client,
     output_dir: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
     fn warning(x: &str, y: &str) {
@@ -70,10 +71,7 @@ pub fn generate(
         };
 
         let get_item_icon = |x: &str| match i.get_value_by_key(x) {
-            Some(v) => format!(
-                "https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{}",
-                v.icon
-            ),
+            Some(v) => v.icon,
             _ => {
                 warning("item icon", lightcone_id);
                 String::new()
@@ -129,7 +127,7 @@ pub fn generate(
             I am sorry but this website cannot function normally without it :)
         </noscript>
         <h1 style="margin-bottom:0px">robinwings</h1>
-        <small>If you found an bug or anything like that, please report it <a href="https://github.com/robinwings/gen/issues">here.</a></small>
+        <small>If you found a bug or anything like that, please report it <a href="https://github.com/robinwings/gen/issues">here.</a></small>
         <hr>
         <div style="margin-top:20px; margin-bottom:10px">
             <a class="button-link" style="text-decoration: none;" href="../character.html">Character</a>
@@ -228,6 +226,9 @@ pub fn generate(
 
         for (mat_id, total_num) in material_counts.iter() {
             let material_icon = get_item_icon(&mat_id);
+
+            icon::download_image(cl, &material_icon, &icon::IconType::Item, output_dir).await?;
+
             let mat_name = get_item_name(&mat_id);
             output_html.push_str(&format!(
                 r#"

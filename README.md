@@ -9,10 +9,12 @@ todo list:
   - character [done]
   - lightcone [done]
   - relic [done]
+
 - data gen [2/3]
   - character []
   - lightcone [done]
   - relic [done]
-- icon qol [0/2]
-  - download them and put in icon/ []
-  - actually resize them to save some data []
+  
+- icon qol [2/2]
+  - download them and put in icon/ [done]
+  - actually resize them to save some data [done]
