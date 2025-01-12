@@ -53,12 +53,14 @@ pub fn generate(
     >
 
     <div style="margin-bottom: 20px;">
-        <!-- Element Icons -->
 "###,
     );
 
-    // Add element icons
-    for (_, element) in el.element_map.iter() {
+    for (k, element) in el.element_map.iter() {
+        if k == "Thunder" {
+            continue;
+        }
+
         let element_icon = format!(
             r#"<img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/{}" class="filter-icon" id="{}-icon" data-element="{}" onclick="toggleFilter(this, 'element')" />
 "#,
@@ -69,13 +71,6 @@ pub fn generate(
         output_html.push_str(&element_icon);
     }
 
-    output_html.push_str(
-        r#"
-        <!-- Path Icons -->
-"#,
-    );
-
-    // Add path icons
     for (_, path) in pt.path_map.iter() {
         if path.text.is_empty() {
             continue;

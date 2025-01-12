@@ -52,7 +52,6 @@ pub fn generate(
     >
 
     <div style="margin-bottom: 20px;">
-        <!-- Path Icons -->
 "###,
     );
 
