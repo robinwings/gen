@@ -234,7 +234,7 @@ pub async fn generate(
                 r#"
     <tr>
         <td style='display: flex; align-items: center;'>
-            <img style='height: 38px; width: auto; margin-right: 1rem;' src='{}' />
+            <img style='height: 38px; width: auto; margin-right: 1rem;' src='../{}' />
             {}
         </td>
         <td>{}</td>
