@@ -129,7 +129,7 @@ pub fn generate(
             I am sorry but this website cannot function normally without it :)
         </noscript>
         <h1 style="margin-bottom:0px">robinwings</h1>
-        <small>Some scalings are in decimals instead of percentage :)</small>
+        <small>If you found an bug or anything like that, please report it <a href="https://github.com/robinwings/gen/issues">here.</a></small>
         <hr>
         <div style="margin-top:20px; margin-bottom:10px">
             <a class="button-link" style="text-decoration: none;" href="../character.html">Character</a>

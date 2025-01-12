@@ -16,7 +16,7 @@ pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::er
             I am sorry but this website cannot function normally without it :)
         </noscript>
         <h1 style="margin-bottom:0px">robinwings</h1>
-        <small>Some scalings are in decimals instead of percentage :)</small>
+        <small>If you found an bug or anything like that, please report it <a href="https://github.com/robinwings/gen/issues">here.</a></small>
         <hr>
         <div style="margin-top:20px; margin-bottom:10px">
             <a class="button-link" style="text-decoration: none;" href="../character.html">Character</a>
@@ -32,10 +32,6 @@ pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::er
         );
 
         if relic.desc.len() == 1 {
-            let rel_uint = relic_id.parse::<u32>()?;
-            let orb_id = (rel_uint * 10) + 60005;
-            let rope_id = (rel_uint * 10) + 60006;
-
             let html = format!(
                 r#"
             <li><strong>2-Piece:</strong> {}</li>
@@ -43,21 +39,15 @@ pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::er
         <h2>ID</h2>
         <p><strong>6XXXX 5*, 5XXXX 4*, 4XXXX 3*, 3XXXX 2*</strong></p>
         <ul>
-            <li><strong>Orb:</strong> {}</li>
-            <li><strong>Rope:</strong> {}</li>
+            <li><strong>Orb:</strong> 6{}5</li>
+            <li><strong>Rope:</strong> 6{}6</li>
         </ul>
                 "#,
-                relic.desc[0], orb_id, rope_id
+                relic.desc[0], relic_id, relic_id
             );
 
             output_html.push_str(&html);
         } else if relic.desc.len() == 2 {
-            let rel_uint = relic_id.parse::<u32>()?;
-            let head_id = (rel_uint * 10) + 60001;
-            let hand_id = (rel_uint * 10) + 60002;
-            let body_id = (rel_uint * 10) + 60003;
-            let foot_id = (rel_uint * 10) + 60004;
-
             let html = format!(
                 r#"
             <li><strong>2-Piece:</strong> {}</li>
@@ -66,13 +56,13 @@ pub fn generate(rl: RelicSetMap, output_dir: &str) -> Result<(), Box<dyn std::er
         <h2>ID</h2>
         <p><strong>6XXXX 5*, 5XXXX 4*, 4XXXX 3*, 3XXXX 2*</strong></p>
         <ul>
-            <li><strong>Head:</strong> {}</li>
-            <li><strong>Hand:</strong> {}</li>
-            <li><strong>Body:</strong> {}</li>
-            <li><strong>Foot:</strong> {}</li>
+            <li><strong>Head:</strong> 6{}1</li>
+            <li><strong>Hand:</strong> 6{}2</li>
+            <li><strong>Body:</strong> 6{}3</li>
+            <li><strong>Foot:</strong> 6{}4</li>
         </ul>
     "#,
-                relic.desc[0], relic.desc[1], head_id, hand_id, body_id, foot_id
+                relic.desc[0], relic.desc[1], relic_id, relic_id, relic_id, relic_id
             );
 
             output_html.push_str(&html);

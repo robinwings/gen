@@ -28,7 +28,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             {
                 let html_content = std::fs::read_to_string(entry.path())?;
                 let minified_html =
-                    minify_html::minify(html_content.as_bytes(), &minify_html::Cfg::default());
+                    minify_html::minify(html_content.as_bytes(), &minify_html::Cfg {
+                        keep_spaces_between_attributes: true,
+                        minify_css: true,
+                        minify_js: true,
+                        ..Default::default()
+                    });
                 std::fs::write(entry.path(), minified_html)?;
             }
         }
