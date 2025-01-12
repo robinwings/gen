@@ -31,7 +31,10 @@ pub async fn generate_data(
 
     relic::generate(relic_map, output_dir)?;
     lightcone::generate(lc_map, lc_r_map, lc_p_map, &item_map, client, output_dir).await?;
-    character::generate(ch_map, ch_p_map, ch_r_map, ch_s_map, ch_st_map, &item_map, client, output_dir).await?;
+    character::generate(
+        ch_map, ch_p_map, ch_r_map, ch_s_map, ch_st_map, &item_map, client, output_dir,
+    )
+    .await?;
 
     Ok(())
 }
@@ -47,7 +50,10 @@ pub async fn mtest() -> Result<(), Box<dyn std::error::Error>> {
     let ch_s_map = CharacterSkillMap::fetch_map(&url, client).await?;
     let ch_st_map = CharacterSkillTreeMap::fetch_map(&url, client).await?;
 
-    character::generate(ch_map, ch_p_map, ch_r_map, ch_s_map, ch_st_map, &item_map, client, output_dir).await?;
+    character::generate(
+        ch_map, ch_p_map, ch_r_map, ch_s_map, ch_st_map, &item_map, client, output_dir,
+    )
+    .await?;
 
     Ok(())
 }

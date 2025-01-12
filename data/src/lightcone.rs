@@ -1,4 +1,6 @@
-use crate::{Client, warning, File, ItemMap, LightconeMap, LightconePromotionMap, LightconeRankMap, Write};
+use crate::{
+    Client, File, ItemMap, LightconeMap, LightconePromotionMap, LightconeRankMap, Write, warning,
+};
 
 const JS_SCRIPT: &str = r###"
 function updateRefinements(weaponId, level) {
@@ -134,12 +136,14 @@ pub async fn generate(
         <h1>{}</h1>
         <p><strong>{} | {}* {}</strong></p>
 
-        <h2>Stats</h2>
-        <ul>
-            <li><strong>Max HP:</strong> {}</li>
-            <li><strong>Max ATK:</strong> {}</li>
-            <li><strong>Max DEF:</strong> {}</li>
-        </ul>
+        <h2>Stats (Lv. 80)</h2>
+        <div style="display: flex; margin:0px; padding:0px;">
+            <ul>
+                <li><strong>HP:</strong> {}</li>
+                <li><strong>ATK:</strong> {}</li>
+                <li><strong>DEF:</strong> {}</li>
+            </ul>
+        </div>
 
         <h2>Ability</h2>
         <ul>
